@@ -7,20 +7,19 @@ const TodoItem = ({ todoItem }) => {
   return (
     <div>
       <div>
-        <span>
-          <BsCheckCircle />
-          <BsCircle />
-        </span>
+        <button>
+          <BsCheckCircle /> <BsCircle />
+        </button>
         <span>{title}</span>
         <input type="text" />
       </div>
       <div>
-        <span>
+        <button>
           <BsPencil />
-        </span>
-        <span>
+        </button>
+        <button>
           <BsTrash />
-        </span>
+        </button>
       </div>
     </div>
   );
