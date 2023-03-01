@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import styled from "styled-components";
 
+import styled from "styled-components";
+import { fetchTodos } from "../../api/api";
 import TodoItem from "./TodoItem";
 
 const TodoItemListBlock = styled.div`
@@ -15,22 +15,13 @@ const TodoItemList = () => {
   const [isLoading, setIsloading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchTodos = async () => {
+  const HandleTodos = async () => {
     setIsloading(true);
     setError(null);
     try {
-      const response = await axios.get(
-        "https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos",
-        {
-          headers: {
-            "content-type": "application/json",
-            apikey: "FcKdtJs202301",
-            username: "KDT4_LeeChanYoung",
-          },
-        }
-      );
+      const todos = await fetchTodos();
+      setTodoList(todos);
       setIsloading(false);
-      return response.data;
     } catch (error) {
       setIsloading(false);
       setError(error.message);
@@ -39,8 +30,7 @@ const TodoItemList = () => {
 
   useEffect(() => {
     (async () => {
-      const todo = await fetchTodos();
-      setTodoList(todo);
+      HandleTodos();
     })();
   }, []);
 
