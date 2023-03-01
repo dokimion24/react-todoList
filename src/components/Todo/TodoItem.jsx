@@ -1,4 +1,5 @@
 import React from "react";
+import { BsCheckCircle, BsCircle, BsTrash, BsPencil } from "react-icons/bs";
 
 const TodoItem = ({ todoItem }) => {
   console.log(todoItem);
@@ -6,14 +7,20 @@ const TodoItem = ({ todoItem }) => {
   return (
     <div>
       <div>
-        <span>체크</span>
+        <span>
+          <BsCheckCircle />
+          <BsCircle />
+        </span>
         <span>{title}</span>
         <input type="text" />
       </div>
       <div>
-        <span>수정</span>
-        <span>완료</span>
-        <span>삭제</span>
+        <span>
+          <BsPencil />
+        </span>
+        <span>
+          <BsTrash />
+        </span>
       </div>
     </div>
   );
