@@ -1,14 +1,25 @@
-import axios from "axios";
+import axios from 'axios';
 
 const headers = {
-  "content-type": "application/json",
-  apikey: "FcKdtJs202301",
-  username: "KDT4_LeeChanYoung",
+  apikey: `${import.meta.env.VITE_API_KEY}`,
+  username: `${import.meta.env.VITE_USERNAME}`,
 };
 
 export const fetchTodos = async () => {
-  const response = await axios.get(
-    "https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos",
+  const response = await axios.get(`${import.meta.env.VITE_BASE_URL}`, {
+    headers,
+  });
+  return response.data;
+};
+
+export const editTodo = async (todo) => {
+  const { title, done, id } = todo;
+  const response = await axios.put(
+    `${import.meta.env.VITE_BASE_URL}/${id}`,
+    {
+      title,
+      done,
+    },
     {
       headers,
     }
