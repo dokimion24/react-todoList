@@ -26,3 +26,13 @@ export const editTodo = async (todo) => {
   );
   return response.data;
 };
+
+export const deleteTodo = async (id) => {
+  const response = await axios.delete(
+    `${import.meta.env.VITE_BASE_URL}/${id}`,
+    {
+      headers,
+    }
+  );
+  return response.data;
+};
