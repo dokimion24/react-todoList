@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import TodoHeader from './TodoHeader';
-import TodoForm from './TodoForm';
-import TodoItemList from './TodoItemList';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import TodoHeader from "./TodoHeader";
+import TodoForm from "./TodoForm";
+import TodoItemList from "./TodoItemList";
+import styled from "styled-components";
 
-import { fetchTodos, deleteTodo } from '../../api/api';
+import { fetchTodos, deleteTodo, addTodo } from "../../api/api";
 
 const TodoTemplateBlock = styled.div`
   display: flex;
@@ -23,6 +23,7 @@ const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsloading] = useState(false);
   const [error, setError] = useState(null);
+  const [todoInputValue, setTodoInputValue] = useState("");
 
   const HandleFetchTodos = async () => {
     setIsloading(true);
@@ -35,7 +36,6 @@ const TodoList = () => {
       setIsloading(false);
       setError(error.message);
     }
-    
   };
 
   useEffect(() => {
@@ -44,23 +44,37 @@ const TodoList = () => {
     })();
   }, []);
 
-  const handleDeleteTodo = async (id) => {
+  const onCLickDleteTodo = async (id) => {
     const newTodo = todos.filter((todo) => todo.id !== id);
     setTodos(newTodo);
     await deleteTodo(id);
   };
 
-  const handleAddTodo = async () => {};
+  const onSubmitTodo = async (e) => {
+    e.preventDefault();
+
+    if (todoInputValue.trim().length === 0) {
+      alert("할 일을 입력해주세요");
+      return;
+    }
+
+    const addedTodo = await addTodo(todoInputValue);
+    setTodos((prev) => [addedTodo, ...prev]);
+  };
 
   return (
     <TodoTemplateBlock>
       <TodoHeader />
-      <TodoForm handleAddTodo={handleAddTodo} />
+      <TodoForm
+        onSubmitTodo={onSubmitTodo}
+        todoInputValue={todoInputValue}
+        setTodoInputValue={setTodoInputValue}
+      />
       <TodoItemList
         todos={todos}
         isLoading={isLoading}
         error={error}
-        handleDeleteTodo={handleDeleteTodo}
+        onCLickDleteTodo={onCLickDleteTodo}
       />
     </TodoTemplateBlock>
   );
