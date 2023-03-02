@@ -23,8 +23,7 @@ const Button = styled.button`
   display: ${(props) => (props.isDone ? "inline" : "none")};
 `;
 
-const TodoItem = ({ todoItem, onCLickDleteTodo }) => {
-  const [todo, setTodo] = useState(todoItem);
+const TodoItem = ({ todo, onCLickDleteTodo, onClickToggleTodoDone }) => {
   const [isShownEditBtn, setIsSownEditBtn] = useState(true);
 
   const handleEditTodo = async () => {
@@ -34,11 +33,6 @@ const TodoItem = ({ todoItem, onCLickDleteTodo }) => {
     else await editTodo(todo);
   };
 
-  const handleToggleCheckBtn = async () => {
-    setTodo({ ...todo, done: !todo.done });
-    await editTodo(todo);
-  };
-
   const handleChangeTitle = (e) => {
     setTodo({ ...todo, title: e.target.value });
   };
@@ -46,12 +40,16 @@ const TodoItem = ({ todoItem, onCLickDleteTodo }) => {
   return (
     <TodoItemBlock>
       <div>
-        <Button isDone={todo.done} onClick={handleToggleCheckBtn}>
-          <BsCheckCircle />
-        </Button>
-        <Button isDone={!todo.done} onClick={handleToggleCheckBtn}>
-          <BsCircle />
-        </Button>
+        {todo.done ? (
+          <button onClick={() => onClickToggleTodoDone(todo)}>
+            <BsCheckCircle />
+          </button>
+        ) : (
+          <button onClick={() => onClickToggleTodoDone(todo)}>
+            <BsCircle />
+          </button>
+        )}
+
         {isShownEditBtn ? (
           <span>{todo.title}</span>
         ) : (

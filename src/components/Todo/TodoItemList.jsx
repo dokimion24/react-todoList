@@ -5,7 +5,13 @@ import TodoItem from "./TodoItem";
 
 const TodoItemListBlock = styled.div``;
 
-const TodoItemList = ({ todos, isLoading, error, onCLickDleteTodo }) => {
+const TodoItemList = ({
+  todos,
+  isLoading,
+  error,
+  onCLickDleteTodo,
+  onClickToggleTodoDone,
+}) => {
   let content = <p>할 일을 추가해주세요</p>;
 
   if (todos?.length > 0) {
@@ -14,8 +20,9 @@ const TodoItemList = ({ todos, isLoading, error, onCLickDleteTodo }) => {
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
-            todoItem={todo}
+            todo={todo}
             onCLickDleteTodo={onCLickDleteTodo}
+            onClickToggleTodoDone={onClickToggleTodoDone}
           />
         ))}
       </ul>

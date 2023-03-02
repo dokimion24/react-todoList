@@ -4,7 +4,7 @@ import TodoForm from "./TodoForm";
 import TodoItemList from "./TodoItemList";
 import styled from "styled-components";
 
-import { fetchTodos, deleteTodo, addTodo } from "../../api/api";
+import { fetchTodos, deleteTodo, addTodo, editTodo } from "../../api/api";
 
 const TodoTemplateBlock = styled.div`
   display: flex;
@@ -23,7 +23,9 @@ const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsloading] = useState(false);
   const [error, setError] = useState(null);
+
   const [todoInputValue, setTodoInputValue] = useState("");
+  // const [todo, setTodo] = useState(todoItem);
 
   const HandleFetchTodos = async () => {
     setIsloading(true);
@@ -58,8 +60,22 @@ const TodoList = () => {
       return;
     }
 
-    const addedTodo = await addTodo(todoInputValue);
-    setTodos((prev) => [addedTodo, ...prev]);
+    const newTodos = await addTodo(todoInputValue);
+    setTodos((prev) => [newTodos, ...prev]);
+  };
+
+  const onClickToggleTodoDone = async (clickedTodo) => {
+    const foundTodo = todos.findIndex((todo) => todo.id == clickedTodo.id);
+    const newTodos = todos.map((todo) => {
+      if (todo.id === clickedTodo.id) {
+        todo.done = !clickedTodo.done;
+      }
+      return todo;
+    });
+    console.log(newTodos);
+
+    setTodos(newTodos);
+    await editTodo(clickedTodo);
   };
 
   return (
@@ -75,6 +91,7 @@ const TodoList = () => {
         isLoading={isLoading}
         error={error}
         onCLickDleteTodo={onCLickDleteTodo}
+        onClickToggleTodoDone={onClickToggleTodoDone}
       />
     </TodoTemplateBlock>
   );
