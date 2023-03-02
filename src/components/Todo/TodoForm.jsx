@@ -1,12 +1,18 @@
-import React from 'react';
+import React from "react";
 
-const TodoForm = (handleAddTodo) => {
+const TodoForm = ({ onSubmitTodo, todoInputValue, setTodoInputValue }) => {
+  const onClickGetTodoTitle = (e) => {
+    setTodoInputValue(e.target.value);
+  };
+
   return (
-    <form>
-      <input type="text" />
-      <button type="sumbmit" onSubmit={handleAddTodo}>
-        Add
-      </button>
+    <form onSubmit={onSubmitTodo}>
+      <input
+        value={todoInputValue}
+        type="text"
+        onChange={onClickGetTodoTitle}
+      />
+      <button type="sumbmit">Add</button>
     </form>
   );
 };
