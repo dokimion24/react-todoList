@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { editTodo } from '../../api/api';
+import React, { useState } from "react";
+import { editTodo } from "../../api/api";
 import {
   BsCheckCircle,
   BsCircle,
   BsTrash,
   BsPencil,
   BsCheck,
-} from 'react-icons/bs';
-import styled from 'styled-components';
+} from "react-icons/bs";
+import styled from "styled-components";
 
 const TodoItemBlock = styled.li`
   display: flex;
@@ -20,10 +20,10 @@ const TodoItemBlock = styled.li`
 `;
 
 const Button = styled.button`
-  display: ${(props) => (props.isDone ? 'inline' : 'none')};
+  display: ${(props) => (props.isDone ? "inline" : "none")};
 `;
 
-const TodoItem = ({ todoItem, handleDeleteTodo }) => {
+const TodoItem = ({ todoItem, onCLickDleteTodo }) => {
   const [todo, setTodo] = useState(todoItem);
   const [isShownEditBtn, setIsSownEditBtn] = useState(true);
 
@@ -69,7 +69,7 @@ const TodoItem = ({ todoItem, handleDeleteTodo }) => {
           </button>
         )}
 
-        <button onClick={() => handleDeleteTodo(todo.id)}>
+        <button onClick={() => onCLickDleteTodo(todo.id)}>
           <BsTrash />
         </button>
       </div>

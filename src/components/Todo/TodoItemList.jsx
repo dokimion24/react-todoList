@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import styled from 'styled-components';
-import TodoItem from './TodoItem';
+import styled from "styled-components";
+import TodoItem from "./TodoItem";
 
 const TodoItemListBlock = styled.div``;
 
-const TodoItemList = ({ todos, isLoading, error, handleDeleteTodo }) => {
+const TodoItemList = ({ todos, isLoading, error, onCLickDleteTodo }) => {
   let content = <p>할 일을 추가해주세요</p>;
 
   if (todos?.length > 0) {
@@ -15,7 +15,7 @@ const TodoItemList = ({ todos, isLoading, error, handleDeleteTodo }) => {
           <TodoItem
             key={todo.id}
             todoItem={todo}
-            handleDeleteTodo={handleDeleteTodo}
+            onCLickDleteTodo={onCLickDleteTodo}
           />
         ))}
       </ul>
