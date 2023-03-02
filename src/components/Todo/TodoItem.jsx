@@ -23,40 +23,53 @@ const Button = styled.button`
   display: ${(props) => (props.isDone ? 'inline' : 'none')};
 `;
 
-const TodoItem = ({ todoItem }) => {
-  // const { title, done } = todoItem;
-
+const TodoItem = ({ todoItem, handleDeleteTodo }) => {
   const [todo, setTodo] = useState(todoItem);
+  const [isShownEditBtn, setIsSownEditBtn] = useState(true);
 
-  const handleClickEditBtn = (e) => {
-    console.log(todo);
+  const handleEditTodo = async () => {
+    setIsSownEditBtn(!isShownEditBtn);
+
+    if (isShownEditBtn) return;
+    else await editTodo(todo);
   };
 
-  const toggleTodoDone = async () => {
+  const handleToggleCheckBtn = async () => {
     setTodo({ ...todo, done: !todo.done });
     await editTodo(todo);
+  };
+
+  const handleChangeTitle = (e) => {
+    setTodo({ ...todo, title: e.target.value });
   };
 
   return (
     <TodoItemBlock>
       <div>
-        <Button isDone={todo.done} onClick={() => toggleTodoDone(todo.done)}>
+        <Button isDone={todo.done} onClick={handleToggleCheckBtn}>
           <BsCheckCircle />
         </Button>
-        <Button isDone={!todo.done} onClick={() => toggleTodoDone(todo.done)}>
+        <Button isDone={!todo.done} onClick={handleToggleCheckBtn}>
           <BsCircle />
         </Button>
-        <span>{todo.title}</span>
-        <input type="text" style={{ display: 'none' }} />
+        {isShownEditBtn ? (
+          <span>{todo.title}</span>
+        ) : (
+          <input value={todo.title} onChange={handleChangeTitle} type="text" />
+        )}
       </div>
       <div>
-        <button>
-          <BsPencil onClick={handleClickEditBtn} />
-        </button>
-        <button>
-          <BsCheck />
-        </button>
-        <button>
+        {isShownEditBtn ? (
+          <button onClick={handleEditTodo}>
+            <BsPencil />
+          </button>
+        ) : (
+          <button onClick={handleEditTodo}>
+            <BsCheck />
+          </button>
+        )}
+
+        <button onClick={() => handleDeleteTodo(todo.id)}>
           <BsTrash />
         </button>
       </div>
