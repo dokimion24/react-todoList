@@ -17,17 +17,14 @@ export const fetchTodos = async () => {
 export const addTodo = async (title) => {
   const response = await axios.post(
     `${import.meta.env.VITE_BASE_URL}`,
-    {
-      title,
-    },
-    {
-      headers,
-    }
+    { title },
+    { headers }
   );
   return response.data;
 };
 
 export const editTodo = async (todo) => {
+  console.log(todo);
   const { title, done, id } = todo;
   const response = await axios.put(
     `${import.meta.env.VITE_BASE_URL}/${id}`,
@@ -35,9 +32,7 @@ export const editTodo = async (todo) => {
       title,
       done,
     },
-    {
-      headers,
-    }
+    { headers }
   );
   return response.data;
 };
@@ -45,9 +40,7 @@ export const editTodo = async (todo) => {
 export const deleteTodo = async (id) => {
   const response = await axios.delete(
     `${import.meta.env.VITE_BASE_URL}/${id}`,
-    {
-      headers,
-    }
+    { headers }
   );
   return response.data;
 };
