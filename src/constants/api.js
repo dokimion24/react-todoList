@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const headers = {
   apikey: `${import.meta.env.VITE_API_KEY}`,
@@ -24,7 +24,6 @@ export const addTodo = async (title) => {
 };
 
 export const editTodo = async (todo) => {
-  console.log(todo);
   const { title, done, id } = todo;
   const response = await axios.put(
     `${import.meta.env.VITE_BASE_URL}/${id}`,
