@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import styled from "styled-components";
-import TodoItem from "./TodoItem";
+import styled from 'styled-components';
+import TodoItem from './TodoItem';
 
 const TodoItemListBlock = styled.div``;
 
@@ -9,8 +9,9 @@ const TodoItemList = ({
   todos,
   isLoading,
   error,
-  onCLickDleteTodo,
+  onClickDleteTodo,
   onClickToggleTodoDone,
+  onClickEditTodoTitle,
 }) => {
   let content = <p>할 일을 추가해주세요</p>;
 
@@ -21,8 +22,9 @@ const TodoItemList = ({
           <TodoItem
             key={todo.id}
             todo={todo}
-            onCLickDleteTodo={onCLickDleteTodo}
+            onClickDleteTodo={onClickDleteTodo}
             onClickToggleTodoDone={onClickToggleTodoDone}
+            onClickEditTodoTitle={onClickEditTodoTitle}
           />
         ))}
       </ul>

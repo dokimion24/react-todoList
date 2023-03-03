@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { editTodo } from "../../api/api";
+import React, { useState } from 'react';
+import { editTodo } from '../../constants/api';
 import {
   BsCheckCircle,
   BsCircle,
   BsTrash,
   BsPencil,
   BsCheck,
-} from "react-icons/bs";
-import styled from "styled-components";
+} from 'react-icons/bs';
+import styled from 'styled-components';
 
 const TodoItemBlock = styled.li`
   display: flex;
@@ -20,21 +20,26 @@ const TodoItemBlock = styled.li`
 `;
 
 const Button = styled.button`
-  display: ${(props) => (props.isDone ? "inline" : "none")};
+  display: ${(props) => (props.isDone ? 'inline' : 'none')};
 `;
 
-const TodoItem = ({ todo, onCLickDleteTodo, onClickToggleTodoDone }) => {
-  const [isShownEditBtn, setIsSownEditBtn] = useState(true);
-
+const TodoItem = ({
+  todo,
+  onClickDleteTodo,
+  onClickToggleTodoDone,
+  onClickEditTodoTitle,
+}) => {
+  const [isShownEditBtn, setIsShownEditBtn] = useState(true);
+  const [title, setTitle] = useState(todo.title);
   const handleEditTodo = async () => {
-    setIsSownEditBtn(!isShownEditBtn);
+    setIsShownEditBtn(!isShownEditBtn);
 
     if (isShownEditBtn) return;
     else await editTodo(todo);
   };
 
-  const handleChangeTitle = (e) => {
-    setTodo({ ...todo, title: e.target.value });
+  const onChangeEditTodoTitle = (e) => {
+    setTitle(e.target.value);
   };
 
   return (
@@ -51,9 +56,9 @@ const TodoItem = ({ todo, onCLickDleteTodo, onClickToggleTodoDone }) => {
         )}
 
         {isShownEditBtn ? (
-          <span>{todo.title}</span>
+          <span>{title}</span>
         ) : (
-          <input value={todo.title} onChange={handleChangeTitle} type="text" />
+          <input value={title} onChange={onChangeEditTodoTitle} type="text" />
         )}
       </div>
       <div>
@@ -62,12 +67,17 @@ const TodoItem = ({ todo, onCLickDleteTodo, onClickToggleTodoDone }) => {
             <BsPencil />
           </button>
         ) : (
-          <button onClick={handleEditTodo}>
+          <button
+            onClick={() => {
+              handleEditTodo();
+              onClickEditTodoTitle(todo, title);
+            }}
+          >
             <BsCheck />
           </button>
         )}
 
-        <button onClick={() => onCLickDleteTodo(todo.id)}>
+        <button onClick={() => onClickDleteTodo(todo.id)}>
           <BsTrash />
         </button>
       </div>
