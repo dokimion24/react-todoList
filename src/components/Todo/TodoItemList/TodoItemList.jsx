@@ -1,9 +1,7 @@
 import React from 'react';
 
-import styled from 'styled-components';
-import TodoItem from './TodoItem';
-
-const TodoItemListBlock = styled.div``;
+import TodoItem from '../TodoItem/TodoItem';
+import * as S from './TodoItemList.style';
 
 const TodoItemList = ({
   todos,
@@ -38,7 +36,7 @@ const TodoItemList = ({
   if (error) {
     content = <p>{error}</p>;
   }
-  return <TodoItemListBlock todos={todos}>{content}</TodoItemListBlock>;
+  return <S.TodoItemListBlock todos={todos}>{content}</S.TodoItemListBlock>;
 };
 
 export default TodoItemList;

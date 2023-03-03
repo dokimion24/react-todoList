@@ -1,23 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import TodoHeader from './TodoHeader';
-import TodoForm from './TodoForm';
-import TodoItemList from './TodoItemList';
-import styled from 'styled-components';
+import TodoHeader from '../TodoHeader/TodoHeader';
+import TodoForm from '../TodoForm/TodoForm';
+import TodoItemList from '../TodoItemList/TodoItemList';
 
-import { fetchTodos, deleteTodo, addTodo, editTodo } from '../../constants/api';
+import * as S from './TodoList.style';
 
-const TodoTemplateBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 460px;
-  height: 76vh;
-  margin: 20px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: var(--box-shadow);
-`;
+import {
+  fetchTodos,
+  deleteTodo,
+  addTodo,
+  editTodo,
+} from '../../../constants/api';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -100,7 +93,7 @@ const TodoList = () => {
   };
 
   return (
-    <TodoTemplateBlock>
+    <S.TodoTemplateBlock>
       <TodoHeader numberOfLeftTodo={numberOfLeftTodo} />
       <TodoForm
         onSubmitTodo={onSubmitTodo}
@@ -115,7 +108,7 @@ const TodoList = () => {
         onClickToggleTodoDone={onClickToggleTodoDone}
         onClickEditTodoTitle={onClickEditTodoTitle}
       />
-    </TodoTemplateBlock>
+    </S.TodoTemplateBlock>
   );
 };
 

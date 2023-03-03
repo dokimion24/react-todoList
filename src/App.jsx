@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoCalendar from './components/Calendar/TodoCalendar';
-import TodoList from './components/Todo/TodoList';
+import TodoList from './components/Todo/TodoList/TodoList';
 
 import styled from 'styled-components';
 import { GlobalStyle } from './style/GlobalStyle';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { editTodo } from '../../constants/api';
+import { editTodo } from '../../../constants/api';
 import {
   BsCheckCircle,
   BsCircle,
@@ -7,21 +7,8 @@ import {
   BsPencil,
   BsCheck,
 } from 'react-icons/bs';
-import styled from 'styled-components';
 
-const TodoItemBlock = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 14px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  margin-bottom: 10px;
-`;
-
-const Button = styled.button`
-  display: ${(props) => (props.isDone ? 'inline' : 'none')};
-`;
+import * as S from './TodoItem.style';
 
 const TodoItem = ({
   todo,
@@ -43,7 +30,7 @@ const TodoItem = ({
   };
 
   return (
-    <TodoItemBlock>
+    <S.TodoItemBlock>
       <div>
         {todo.done ? (
           <button onClick={() => onClickToggleTodoDone(todo)}>
@@ -81,7 +68,7 @@ const TodoItem = ({
           <BsTrash />
         </button>
       </div>
-    </TodoItemBlock>
+    </S.TodoItemBlock>
   );
 };
 
