@@ -5,7 +5,16 @@ export const TodoItemBlock = styled.li`
   align-items: center;
   justify-content: space-between;
   padding: 10px 14px;
-  background-color: #f5f5f5;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   margin-bottom: 10px;
+`;
+
+export const Button = styled.button`
+  background-color: #fff;
+  padding: 4px;
+
+  &:hover {
+    color: var(--font-color);
+  }
 `;
