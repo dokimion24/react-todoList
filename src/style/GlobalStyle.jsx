@@ -1,12 +1,11 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
 * {
-		box-sizing: border-box;
-		--box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-		--border-color: #e9ecef;
-		--font-color: #002790;
+	box-sizing: border-box;
+	--box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+	--border-color: #e9ecef;
+	--font-color: #6f48eb;
 
 }
   html, body, div, span, h1, h2, h3, h4, h5, h6, p,
@@ -59,4 +58,4 @@ body {
 	justify-content: center;
 	align-items: center;
 }
-`;
+`

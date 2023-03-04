@@ -24,7 +24,7 @@ export const Button = styled.button`
   background-color: #fff;
   padding: 4px;
 
-  &:hover {
+  & svg:hover {
     color: var(--font-color);
   }
 `

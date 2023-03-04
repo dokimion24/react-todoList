@@ -8,7 +8,7 @@ export const TodoItemListBlock = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #002790;
+    background-color: var(--font-color);
     border-radius: 10px;
   }
 
