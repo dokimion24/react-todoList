@@ -1,6 +1,7 @@
 import React from 'react';
 
 import * as S from './TodoForm.style';
+import { BsPlusLg } from 'react-icons/bs';
 
 const TodoForm = ({ onSubmitTodo, todoInputValue, setTodoInputValue }) => {
   const onClickGetTodoTitle = (e) => {
@@ -8,14 +9,19 @@ const TodoForm = ({ onSubmitTodo, todoInputValue, setTodoInputValue }) => {
   };
 
   return (
-    <form onSubmit={onSubmitTodo}>
-      <input
+    <S.FormContainer onSubmit={onSubmitTodo}>
+      <S.TodoAddInput
         value={todoInputValue}
         type="text"
         onChange={onClickGetTodoTitle}
+        placeholder="할 일을 입력해주세요."
       />
-      <button type="sumbmit">Add</button>
-    </form>
+      <S.TodoAddBtn type="sumbmit">
+        <span>
+          <BsPlusLg /> 할 일 추가
+        </span>
+      </S.TodoAddBtn>
+    </S.FormContainer>
   );
 };
 

@@ -33,13 +33,13 @@ const TodoItem = ({
     <S.TodoItemBlock>
       <div>
         {todo.done ? (
-          <button onClick={() => onClickToggleTodoDone(todo)}>
+          <S.Button onClick={() => onClickToggleTodoDone(todo)}>
             <BsCheckCircle />
-          </button>
+          </S.Button>
         ) : (
-          <button onClick={() => onClickToggleTodoDone(todo)}>
+          <S.Button onClick={() => onClickToggleTodoDone(todo)}>
             <BsCircle />
-          </button>
+          </S.Button>
         )}
 
         {isShownEditBtn ? (
@@ -50,23 +50,23 @@ const TodoItem = ({
       </div>
       <div>
         {isShownEditBtn ? (
-          <button onClick={handleEditTodo}>
+          <S.Button onClick={handleEditTodo}>
             <BsPencil />
-          </button>
+          </S.Button>
         ) : (
-          <button
+          <S.Button
             onClick={() => {
               handleEditTodo();
               onClickEditTodoTitle(todo, title);
             }}
           >
             <BsCheck />
-          </button>
+          </S.Button>
         )}
 
-        <button onClick={() => onClickDleteTodo(todo.id)}>
+        <S.Button onClick={() => onClickDleteTodo(todo.id)}>
           <BsTrash />
-        </button>
+        </S.Button>
       </div>
     </S.TodoItemBlock>
   );

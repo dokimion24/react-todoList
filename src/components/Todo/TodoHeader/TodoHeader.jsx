@@ -13,12 +13,14 @@ const TodoHeader = ({ numberOfLeftTodo }) => {
 
   return (
     <S.TodoHeadBlock>
-      <h2>
-        <span>{dateTime.year}</span>년 <span>{dateTime.month}</span>월{' '}
-        <span>{dateTime.date}</span>일
-      </h2>
-      <div>{dateTime.day}</div>
-      <div>할 일 {numberOfLeftTodo}개 남음</div>
+      <S.TodoDate>
+        <div>
+          <span>{dateTime.year}</span>년<span>{dateTime.month}</span>월
+          <span>{dateTime.date}</span>일
+        </div>
+        <div>{dateTime.day}</div>
+      </S.TodoDate>
+      <div>남은 할 일 : {numberOfLeftTodo}개</div>
     </S.TodoHeadBlock>
   );
 };
