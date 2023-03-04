@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -42,10 +42,20 @@ a:visited {
 	color: black;
 }
 
+input{
+	border: none;
+}
+
+input:focus {
+	outline: none;
+	border-bottom: 1px solid var(--font-color);
+}
+
 body {
+	font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 	height: 100vh;
-  background: #e9ecef;
-  display: flex;
+	background: #e9ecef;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 }

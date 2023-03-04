@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const TodoItemBlock = styled.li`
   display: flex;
@@ -8,6 +8,16 @@ export const TodoItemBlock = styled.li`
   border: 1px solid var(--border-color);
   border-radius: 10px;
   margin-bottom: 10px;
+  color: ${(props) => (props.done ? "#ccc" : "#000")};
+  text-decoration: ${(props) => (props.done ? "line-through" : "none")};
+
+  & svg {
+    color: ${(props) => (props.done ? "#ccc" : "#000")};
+  }
+
+  & > div + div button:first-child {
+    display: ${(props) => (props.done ? "none" : "inline")};
+  }
 `;
 
 export const Button = styled.button`
@@ -17,4 +27,9 @@ export const Button = styled.button`
   &:hover {
     color: var(--font-color);
   }
+`;
+
+export const Input = styled.input`
+  font-size: 16px;
+  border-bottom: 1px solid var(--border-color);
 `;

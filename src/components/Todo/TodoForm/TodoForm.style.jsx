@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FormContainer = styled.form`
   display: flex;
@@ -8,14 +8,8 @@ export const FormContainer = styled.form`
 
 export const TodoAddInput = styled.input`
   font-size: 14px;
-  border: 0px;
   border-bottom: 1px solid var(--border-color);
   width: 60%;
-
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid var(--font-color);
-  }
 `;
 
 export const TodoAddBtn = styled.button`
