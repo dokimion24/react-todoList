@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import * as S from './TodoForm.style';
-import { BsPlusLg } from 'react-icons/bs';
+import * as S from './TodoForm.style'
+import { BsPlusLg } from 'react-icons/bs'
 
 const TodoForm = ({ onSubmitTodo, todoInputValue, setTodoInputValue }) => {
   const onClickGetTodoTitle = (e) => {
-    setTodoInputValue(e.target.value);
-  };
+    setTodoInputValue(e.target.value)
+  }
 
   return (
     <S.FormContainer onSubmit={onSubmitTodo}>
@@ -22,7 +22,7 @@ const TodoForm = ({ onSubmitTodo, todoInputValue, setTodoInputValue }) => {
         </span>
       </S.TodoAddBtn>
     </S.FormContainer>
-  );
-};
+  )
+}
 
-export default TodoForm;
+export default TodoForm

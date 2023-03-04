@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const TodoTemplateBlock = styled.div`
   display: flex;
@@ -11,4 +11,4 @@ export const TodoTemplateBlock = styled.div`
   background-color: white;
   border-radius: 12px;
   box-shadow: var(--box-shadow);
-`;
+`

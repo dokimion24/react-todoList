@@ -1,13 +1,13 @@
-import React from 'react';
-import TodoCalendar from './components/Calendar/TodoCalendar';
-import TodoList from './components/Todo/TodoList/TodoList';
+import React from 'react'
+import TodoCalendar from './components/Calendar/TodoCalendar'
+import TodoList from './components/Todo/TodoList/TodoList'
 
-import styled from 'styled-components';
-import { GlobalStyle } from './style/GlobalStyle';
+import styled from 'styled-components'
+import { GlobalStyle } from './style/GlobalStyle'
 
 const TodoWrapper = styled.div`
   display: flex;
-`;
+`
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
         <TodoList />
       </TodoWrapper>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

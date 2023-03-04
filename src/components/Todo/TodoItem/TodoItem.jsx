@@ -1,36 +1,25 @@
-import React, { useState } from 'react';
-import { editTodo } from '../../../constants/api';
-import {
-  BsCheckCircle,
-  BsCircle,
-  BsTrash,
-  BsPencil,
-  BsCheck,
-} from 'react-icons/bs';
+import React, { useState } from 'react'
+import { editTodo } from '../../../constants/api'
+import { BsCheckCircle, BsCircle, BsTrash, BsPencil, BsCheck } from 'react-icons/bs'
 
-import * as S from './TodoItem.style';
+import * as S from './TodoItem.style'
 
-const TodoItem = ({
-  todo,
-  onClickDleteTodo,
-  onClickToggleTodoDone,
-  onClickEditTodoTitle,
-}) => {
-  const [isShownEditBtn, setIsShownEditBtn] = useState(true);
-  const [title, setTitle] = useState(todo.title);
+const TodoItem = ({ todo, onClickDleteTodo, onClickToggleTodoDone, onClickEditTodoTitle }) => {
+  const [isShownEditBtn, setIsShownEditBtn] = useState(true)
+  const [title, setTitle] = useState(todo.title)
   const handleEditTodo = async () => {
-    setIsShownEditBtn(!isShownEditBtn);
+    setIsShownEditBtn(!isShownEditBtn)
 
-    if (isShownEditBtn) return;
-    else await editTodo(todo);
-  };
+    if (isShownEditBtn) return
+    else await editTodo(todo)
+  }
 
   const onChangeEditTodoTitle = (e) => {
-    setTitle(e.target.value);
-  };
+    setTitle(e.target.value)
+  }
 
   return (
-    <S.TodoItemBlock>
+    <S.TodoItemBlock done={todo.done}>
       <div>
         {todo.done ? (
           <S.Button onClick={() => onClickToggleTodoDone(todo)}>
@@ -42,11 +31,7 @@ const TodoItem = ({
           </S.Button>
         )}
 
-        {isShownEditBtn ? (
-          <span>{title}</span>
-        ) : (
-          <input value={title} onChange={onChangeEditTodoTitle} type="text" />
-        )}
+        {isShownEditBtn ? <span>{title}</span> : <S.Input value={title} onChange={onChangeEditTodoTitle} type="text" />}
       </div>
       <div>
         {isShownEditBtn ? (
@@ -56,8 +41,8 @@ const TodoItem = ({
         ) : (
           <S.Button
             onClick={() => {
-              handleEditTodo();
-              onClickEditTodoTitle(todo, title);
+              handleEditTodo()
+              onClickEditTodoTitle(todo, title)
             }}
           >
             <BsCheck />
@@ -69,7 +54,7 @@ const TodoItem = ({
         </S.Button>
       </div>
     </S.TodoItemBlock>
-  );
-};
+  )
+}
 
-export default TodoItem;
+export default TodoItem

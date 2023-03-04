@@ -1,16 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const FormContainer = styled.form`
   display: flex;
   align-items: end;
   margin: 20px 0px;
-`;
+`
 
 export const TodoAddInput = styled.input`
   font-size: 14px;
   border-bottom: 1px solid var(--border-color);
   width: 60%;
-`;
+`
 
 export const TodoAddBtn = styled.button`
   margin-left: 6px;
@@ -39,4 +39,4 @@ export const TodoAddBtn = styled.button`
     margin-right: 4px;
     padding: 4px;
   }
-`;
+`

@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const TodoHeadBlock = styled.div`
   padding: 12px 0;
-`;
+`
 
 export const TodoDate = styled.div`
   font-size: 24px;
@@ -12,13 +12,12 @@ export const TodoDate = styled.div`
   align-items: end;
   margin-bottom: 32px;
 
-  & div+div{
+  & div + div {
     font-size: 20px;
-
   }
 
   span {
     color: var(--font-color);
     font-weight: 600;
   }
-`;
+`

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const TodoItemListBlock = styled.div`
   overflow-y: auto;
@@ -16,4 +16,4 @@ export const TodoItemListBlock = styled.div`
     background-color: whitesmoke;
     border-radius: 10px;
   }
-`;
+`
