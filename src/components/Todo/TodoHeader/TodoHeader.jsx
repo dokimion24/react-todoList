@@ -1,16 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import * as S from './TodoHeader.style'
 
-const TodoHeader = ({ numberOfLeftTodo }) => {
-  const today = new Date()
-  const [dateTime, setDateTime] = useState({
-    year: today.getFullYear(),
-    month: today.getMonth() + 1,
-    date: today.getDate(),
-    day: new Intl.DateTimeFormat('ko-KR', { weekday: 'long' }).format(today),
-  })
-
+const TodoHeader = ({ numberOfLeftTodo, dateTime }) => {
   return (
     <S.TodoHeadBlock>
       <S.TodoDate>
