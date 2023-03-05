@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import TodoCalendar from './components/Calendar/TodoCalendar'
 import TodoList from './components/Todo/TodoList/TodoList'
 
 import styled from 'styled-components'
@@ -19,42 +18,11 @@ const App = () => {
   const [todoInputValue, setTodoInputValue] = useState('')
   const [numberOfLeftTodo, setNumberOfLeftTodo] = useState()
 
-  const [dateValue, setDateValue] = useState(new Date())
   const [dateTime, setDateTime] = useState(getDateObj(new Date()))
-
-  const compare = () => {
-    console.log(dateTime, todos)
-    const newTodos = todos.filter((sortedTodo) => {
-      return (
-        sortedTodo.createdAt.slice(8, 10) === dateTime.date &&
-        sortedTodo.createdAt.slice(0, 4) === dateTime.year &&
-        sortedTodo.createdAt.slice(5, 7) === dateTime.month
-      )
-    })
-
-    setTodos(newTodos)
-  }
-
-  const onChangeShowTodo = (value) => {
-    setDateTime(getDateObj(value))
-    compare()
-  }
 
   const getNumberOfLeftTodo = () => {
     const newTodos = todos.filter((todo) => todo.done === false)
     return newTodos.length
-  }
-
-  const getClickedDateTodo = (sortedTodos) => {
-    const newTodos = sortedTodos.filter((sortedTodo) => {
-      return (
-        sortedTodo.createdAt.slice(8, 10) === dateTime.date &&
-        sortedTodo.createdAt.slice(0, 4) === dateTime.year &&
-        sortedTodo.createdAt.slice(5, 7) === dateTime.month
-      )
-    })
-
-    setTodos(newTodos)
   }
 
   const HandleFetchTodos = async () => {
@@ -63,7 +31,7 @@ const App = () => {
     try {
       const fetchedTodos = await fetchTodos()
       const sortedTodos = fetchedTodos.sort((a, b) => a.done - b.done)
-      getClickedDateTodo(sortedTodos)
+      setTodos(sortedTodos)
       setIsloading(false)
     } catch (error) {
       setIsloading(false)
@@ -129,7 +97,6 @@ const App = () => {
     <>
       <GlobalStyle />
       <TodoWrapper>
-        <TodoCalendar dateValue={dateValue} setDateValue={setDateValue} onChangeShowTodo={onChangeShowTodo} />
         <TodoList
           numberOfLeftTodo={numberOfLeftTodo}
           onSubmitTodo={onSubmitTodo}
