@@ -81,7 +81,6 @@ const App = () => {
   }
 
   const onClickEditTodoTitle = async (clickedTodo: Todo, title: string): Promise<void> => {
-    console.log(clickedTodo)
     clickedTodo.title = title
     const newTodos = todos.map((todo) => {
       if (todo.id === clickedTodo.id) {

@@ -7,7 +7,6 @@ const headers = {
   username: `${import.meta.env.VITE_USERNAME}`,
 }
 
-console.log(headers)
 
 export const fetchTodos = async (): Promise<Todo[]> => {
   const response = await axios.get(`${import.meta.env.VITE_BASE_URL}`, {
