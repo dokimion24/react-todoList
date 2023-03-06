@@ -12,7 +12,7 @@ export const TodoAddInput = styled.input`
   width: 60%;
 `
 
-export const TodoAddBtn = styled.button`
+export const TodoAddBtn = styled.button<any>`
   margin-left: 6px;
   padding: 2px 4px;
   background-color: #fff;

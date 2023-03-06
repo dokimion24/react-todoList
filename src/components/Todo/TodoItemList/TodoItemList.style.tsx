@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const TodoItemListBlock = styled.div`
+import { TodoItemListBlockProps } from '../../../constants'
+
+export const TodoItemListBlock = styled.div<TodoItemListBlockProps>`
   overflow-y: auto;
 
   &:: -webkit-scrollbar {

@@ -1,4 +1,6 @@
-export const getDateObj = (ClickedDate) => {
+import { TodayDate } from '.'
+
+export const getDateObj = (ClickedDate: Date): TodayDate => {
   const dateObj = {
     year: String(ClickedDate.getFullYear()),
     month: String(ClickedDate.getMonth() + 1).padStart(2, '0'),

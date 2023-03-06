@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { editTodo } from '../../../constants/api'
 import { BsCheckCircle, BsCircle, BsTrash, BsPencil, BsCheck } from 'react-icons/bs'
+import { Todo, TodoItemProps } from '../../../constants'
 
 import * as S from './TodoItem.style'
 
-const TodoItem = ({ todo, onClickDleteTodo, onClickToggleTodoDone, onClickEditTodoTitle }) => {
+const TodoItem = ({ todo, onClickDeleteTodo, onClickToggleTodoDone, onClickEditTodoTitle }: TodoItemProps) => {
   const [isShownEditBtn, setIsShownEditBtn] = useState(true)
   const [title, setTitle] = useState(todo.title)
   const handleEditTodo = async () => {
@@ -14,7 +15,7 @@ const TodoItem = ({ todo, onClickDleteTodo, onClickToggleTodoDone, onClickEditTo
     else await editTodo(todo)
   }
 
-  const onChangeEditTodoTitle = (e) => {
+  const onChangeEditTodoTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value)
   }
 
@@ -42,14 +43,14 @@ const TodoItem = ({ todo, onClickDleteTodo, onClickToggleTodoDone, onClickEditTo
           <S.Button
             onClick={() => {
               handleEditTodo()
-              onClickEditTodoTitle(todo, title)
+              onClickEditTodoTitle(todo, title as string)
             }}
           >
             <BsCheck />
           </S.Button>
         )}
 
-        <S.Button onClick={() => onClickDleteTodo(todo.id)}>
+        <S.Button onClick={() => onClickDeleteTodo(todo.id as string)}>
           <BsTrash />
         </S.Button>
       </div>

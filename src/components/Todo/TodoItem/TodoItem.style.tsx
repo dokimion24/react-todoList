@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const TodoItemBlock = styled.li`
+import { TodoItemBlockProps } from '../../../constants'
+
+export const TodoItemBlock = styled.li<TodoItemBlockProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,10 +1,11 @@
 import React from 'react'
+import { TodoFormProps } from '../../../constants'
 
 import * as S from './TodoForm.style'
 import { BsPlusLg } from 'react-icons/bs'
 
-const TodoForm = ({ onSubmitTodo, todoInputValue, setTodoInputValue }) => {
-  const onClickGetTodoTitle = (e) => {
+const TodoForm = ({ onSubmitTodo, todoInputValue, setTodoInputValue }: TodoFormProps) => {
+  const onClickGetTodoTitle = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setTodoInputValue(e.target.value)
   }
 

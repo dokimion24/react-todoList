@@ -2,6 +2,7 @@ import React from 'react'
 import TodoHeader from '../TodoHeader/TodoHeader'
 import TodoForm from '../TodoForm/TodoForm'
 import TodoItemList from '../TodoItemList/TodoItemList'
+import { TodoListProps } from '../../../constants'
 
 import * as S from './TodoList.style'
 
@@ -13,11 +14,11 @@ const TodoList = ({
   todos,
   isLoading,
   error,
-  onClickDleteTodo,
+  onClickDeleteTodo,
   onClickToggleTodoDone,
   onClickEditTodoTitle,
   dateTime,
-}) => {
+}: TodoListProps) => {
   return (
     <S.TodoTemplateBlock>
       <TodoHeader numberOfLeftTodo={numberOfLeftTodo} dateTime={dateTime} />
@@ -26,7 +27,7 @@ const TodoList = ({
         todos={todos}
         isLoading={isLoading}
         error={error}
-        onClickDleteTodo={onClickDleteTodo}
+        onClickDeleteTodo={onClickDeleteTodo}
         onClickToggleTodoDone={onClickToggleTodoDone}
         onClickEditTodoTitle={onClickEditTodoTitle}
       />
