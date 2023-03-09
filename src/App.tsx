@@ -26,7 +26,7 @@ const App = () => {
     return newTodos.length
   }
 
-  const HandleFetchTodos = async (): Promise<void> => {
+  const initTodos = async (): Promise<void> => {
     setIsloading(true)
     setError('')
     try {
@@ -41,22 +41,20 @@ const App = () => {
   }
 
   useEffect(() => {
-    ;(async () => {
-      HandleFetchTodos()
-    })()
+    initTodos()
   }, [])
 
   useEffect(() => {
     setNumberOfLeftTodo(getNumberOfLeftTodo())
   }, [todos])
 
-  const onClickDeleteTodo = async (id: string): Promise<void> => {
+  const handleClickDeleteTodo = async (id: string): Promise<void> => {
     const newTodo = todos.filter((todo) => todo.id !== id)
     setTodos(newTodo)
     await deleteTodo(id)
   }
 
-  const onSubmitTodo = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmitAddTodo = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (todoInputValue.trim().length === 0) {
@@ -68,7 +66,7 @@ const App = () => {
     setTodos((prev) => [newTodos, ...prev])
   }
 
-  const onClickToggleTodoDone = async (clickedTodo: Todo): Promise<void> => {
+  const handleClickToggleTodoDone = async (clickedTodo: Todo): Promise<void> => {
     const newTodos = todos.map((todo) => {
       if (todo.id === clickedTodo.id) {
         todo.done = !clickedTodo.done
@@ -80,7 +78,7 @@ const App = () => {
     await editTodo(clickedTodo)
   }
 
-  const onClickEditTodoTitle = async (clickedTodo: Todo, title: string): Promise<void> => {
+  const handleClickEditTodo = async (clickedTodo: Todo, title: string): Promise<void> => {
     clickedTodo.title = title
     const newTodos = todos.map((todo) => {
       if (todo.id === clickedTodo.id) {
@@ -99,15 +97,15 @@ const App = () => {
       <TodoWrapper>
         <TodoList
           numberOfLeftTodo={numberOfLeftTodo}
-          onSubmitTodo={onSubmitTodo}
+          handleSubmitAddTodo={handleSubmitAddTodo}
           todoInputValue={todoInputValue}
           setTodoInputValue={setTodoInputValue}
           todos={todos}
           isLoading={isLoading}
           error={error}
-          onClickDeleteTodo={onClickDeleteTodo}
-          onClickToggleTodoDone={onClickToggleTodoDone}
-          onClickEditTodoTitle={onClickEditTodoTitle}
+          handleClickDeleteTodo={handleClickDeleteTodo}
+          handleClickToggleTodoDone={handleClickToggleTodoDone}
+          handleClickEditTodo={handleClickEditTodo}
           dateTime={dateTime}
         />
       </TodoWrapper>

@@ -8,28 +8,32 @@ import * as S from './TodoList.style'
 
 const TodoList = ({
   numberOfLeftTodo,
-  onSubmitTodo,
+  handleSubmitAddTodo,
   todoInputValue,
   setTodoInputValue,
   todos,
   isLoading,
   error,
-  onClickDeleteTodo,
-  onClickToggleTodoDone,
-  onClickEditTodoTitle,
+  handleClickDeleteTodo,
+  handleClickToggleTodoDone,
+  handleClickEditTodo,
   dateTime,
 }: TodoListProps) => {
   return (
     <S.TodoTemplateBlock>
       <TodoHeader numberOfLeftTodo={numberOfLeftTodo} dateTime={dateTime} />
-      <TodoForm onSubmitTodo={onSubmitTodo} todoInputValue={todoInputValue} setTodoInputValue={setTodoInputValue} />
+      <TodoForm
+        handleSubmitAddTodo={handleSubmitAddTodo}
+        todoInputValue={todoInputValue}
+        setTodoInputValue={setTodoInputValue}
+      />
       <TodoItemList
         todos={todos}
         isLoading={isLoading}
         error={error}
-        onClickDeleteTodo={onClickDeleteTodo}
-        onClickToggleTodoDone={onClickToggleTodoDone}
-        onClickEditTodoTitle={onClickEditTodoTitle}
+        handleClickDeleteTodo={handleClickDeleteTodo}
+        handleClickToggleTodoDone={handleClickToggleTodoDone}
+        handleClickEditTodo={handleClickEditTodo}
       />
     </S.TodoTemplateBlock>
   )

@@ -8,9 +8,9 @@ const TodoItemList = ({
   todos,
   isLoading,
   error,
-  onClickDeleteTodo,
-  onClickToggleTodoDone,
-  onClickEditTodoTitle,
+  handleClickDeleteTodo,
+  handleClickToggleTodoDone,
+  handleClickEditTodo,
 }: TodoItemListProps) => {
   let content = <p>할 일을 추가해주세요</p>
 
@@ -21,9 +21,9 @@ const TodoItemList = ({
           <TodoItem
             key={todo.id}
             todo={todo}
-            onClickDeleteTodo={onClickDeleteTodo}
-            onClickToggleTodoDone={onClickToggleTodoDone}
-            onClickEditTodoTitle={onClickEditTodoTitle}
+            handleClickDeleteTodo={handleClickDeleteTodo}
+            handleClickToggleTodoDone={handleClickToggleTodoDone}
+            handleClickEditTodo={handleClickEditTodo}
           />
         ))}
       </ul>

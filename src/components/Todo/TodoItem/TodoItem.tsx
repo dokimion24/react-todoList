@@ -5,7 +5,7 @@ import { Todo, TodoItemProps } from '../../../constants'
 
 import * as S from './TodoItem.style'
 
-const TodoItem = ({ todo, onClickDeleteTodo, onClickToggleTodoDone, onClickEditTodoTitle }: TodoItemProps) => {
+const TodoItem = ({ todo, handleClickDeleteTodo, handleClickToggleTodoDone, handleClickEditTodo }: TodoItemProps) => {
   const [isShownEditBtn, setIsShownEditBtn] = useState(true)
   const [title, setTitle] = useState(todo.title)
   const handleEditTodo = async () => {
@@ -23,11 +23,11 @@ const TodoItem = ({ todo, onClickDeleteTodo, onClickToggleTodoDone, onClickEditT
     <S.TodoItemBlock done={todo.done}>
       <div>
         {todo.done ? (
-          <S.Button onClick={() => onClickToggleTodoDone(todo)}>
+          <S.Button onClick={() => handleClickToggleTodoDone(todo)}>
             <BsCheckCircle />
           </S.Button>
         ) : (
-          <S.Button onClick={() => onClickToggleTodoDone(todo)}>
+          <S.Button onClick={() => handleClickToggleTodoDone(todo)}>
             <BsCircle />
           </S.Button>
         )}
@@ -43,14 +43,14 @@ const TodoItem = ({ todo, onClickDeleteTodo, onClickToggleTodoDone, onClickEditT
           <S.Button
             onClick={() => {
               handleEditTodo()
-              onClickEditTodoTitle(todo, title as string)
+              handleClickEditTodo(todo, title as string)
             }}
           >
             <BsCheck />
           </S.Button>
         )}
 
-        <S.Button onClick={() => onClickDeleteTodo(todo.id as string)}>
+        <S.Button onClick={() => handleClickDeleteTodo(todo.id as string)}>
           <BsTrash />
         </S.Button>
       </div>

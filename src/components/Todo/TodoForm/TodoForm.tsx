@@ -4,17 +4,17 @@ import { TodoFormProps } from '../../../constants'
 import * as S from './TodoForm.style'
 import { BsPlusLg } from 'react-icons/bs'
 
-const TodoForm = ({ onSubmitTodo, todoInputValue, setTodoInputValue }: TodoFormProps) => {
-  const onClickGetTodoTitle = (e: React.ChangeEvent<HTMLInputElement>): void => {
+const TodoForm = ({ handleSubmitAddTodo, todoInputValue, setTodoInputValue }: TodoFormProps) => {
+  const handleClickGetTodoTitle = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setTodoInputValue(e.target.value)
   }
 
   return (
-    <S.FormContainer onSubmit={onSubmitTodo}>
+    <S.FormContainer onSubmit={handleSubmitAddTodo}>
       <S.TodoAddInput
         value={todoInputValue}
         type="text"
-        onChange={onClickGetTodoTitle}
+        onChange={handleClickGetTodoTitle}
         placeholder="할 일을 입력해주세요."
       />
       <S.TodoAddBtn type="sumbmit">

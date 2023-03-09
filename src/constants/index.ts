@@ -18,15 +18,15 @@ export interface TodayDate {
 
 export interface TodoListProps {
   numberOfLeftTodo: number
-  onSubmitTodo: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
+  handleSubmitAddTodo: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
   todoInputValue: string
   setTodoInputValue: React.Dispatch<React.SetStateAction<string>>
   todos: Todo[]
   isLoading: boolean
   error: string
-  onClickDeleteTodo: (id: string) => Promise<void>
-  onClickToggleTodoDone: (todo: Todo) => Promise<void>
-  onClickEditTodoTitle: (todo: Todo, title: string) => Promise<void>
+  handleClickDeleteTodo: (id: string) => Promise<void>
+  handleClickToggleTodoDone: (todo: Todo) => Promise<void>
+  handleClickEditTodo: (todo: Todo, title: string) => Promise<void>
   dateTime: TodayDate
 }
 
@@ -34,9 +34,9 @@ export interface TodoItemListProps {
   todos: Todo[]
   isLoading: boolean
   error: string
-  onClickDeleteTodo: (id: string) => Promise<void>
-  onClickToggleTodoDone: (todo: Todo) => Promise<void>
-  onClickEditTodoTitle: (todo: Todo, title: string) => Promise<void>
+  handleClickDeleteTodo: (id: string) => Promise<void>
+  handleClickToggleTodoDone: (todo: Todo) => Promise<void>
+  handleClickEditTodo: (todo: Todo, title: string) => Promise<void>
 }
 
 export interface TodoItemListBlockProps {
@@ -49,13 +49,13 @@ export interface TodoItemBlockProps {
 
 export interface TodoItemProps {
   todo: Todo
-  onClickDeleteTodo: (id: string) => Promise<void>
-  onClickToggleTodoDone: (todo: Todo) => Promise<void>
-  onClickEditTodoTitle: (todo: Todo, title: string) => Promise<void>
+  handleClickDeleteTodo: (id: string) => Promise<void>
+  handleClickToggleTodoDone: (todo: Todo) => Promise<void>
+  handleClickEditTodo: (todo: Todo, title: string) => Promise<void>
 }
 
 export interface TodoFormProps {
-  onSubmitTodo: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
+  handleSubmitAddTodo: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
   todoInputValue: string
   setTodoInputValue: React.Dispatch<React.SetStateAction<string>>
 }
