@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { TodoItemListBlockProps } from '../../../constants'
+import { TodoItemListBlockProps } from '../../constants'
 
 export const TodoItemListBlock = styled.div<TodoItemListBlockProps>`
   overflow-y: auto;

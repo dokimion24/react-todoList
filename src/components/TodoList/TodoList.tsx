@@ -2,7 +2,7 @@ import React from 'react'
 import TodoHeader from '../TodoHeader/TodoHeader'
 import TodoForm from '../TodoForm/TodoForm'
 import TodoItemList from '../TodoItemList/TodoItemList'
-import { TodoListProps } from '../../../constants'
+import { TodoListProps } from '../../constants'
 
 import * as S from './TodoList.style'
 

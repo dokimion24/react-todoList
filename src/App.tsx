@@ -1,10 +1,10 @@
 import React, { useState, useEffect, FormEvent } from 'react'
-import TodoList from './components/Todo/TodoList/TodoList'
 
 import styled from 'styled-components'
 import { GlobalStyle } from './style/GlobalStyle'
 
-import { fetchTodos, deleteTodo, addTodo, editTodo } from './constants/api'
+import TodoList from './components/TodoList/TodoList'
+import { fetchTodos, deleteTodo, addTodo, editTodo } from './constants/request'
 import { getDateObj } from './constants/getDate'
 import { Todo, TodayDate } from './constants'
 

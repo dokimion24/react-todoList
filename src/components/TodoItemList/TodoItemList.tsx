@@ -1,5 +1,5 @@
 import React from 'react'
-import { TodoItemListProps } from '../../../constants'
+import { TodoItemListProps } from '../../constants'
 
 import TodoItem from '../TodoItem/TodoItem'
 import * as S from './TodoItemList.style'

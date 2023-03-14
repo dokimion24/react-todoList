@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { TodoItemBlockProps } from '../../../constants'
+import { TodoItemBlockProps } from '../../constants'
 
 export const TodoItemBlock = styled.li<TodoItemBlockProps>`
   display: flex;

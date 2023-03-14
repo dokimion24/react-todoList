@@ -1,5 +1,5 @@
 import React from 'react'
-import { TodoFormProps } from '../../../constants'
+import { TodoFormProps } from '../../constants'
 
 import * as S from './TodoForm.style'
 import { BsPlusLg } from 'react-icons/bs'

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { editTodo } from '../../../constants/api'
+import { editTodo } from '../../constants/request'
 import { BsCheckCircle, BsCircle, BsTrash, BsPencil, BsCheck } from 'react-icons/bs'
-import { Todo, TodoItemProps } from '../../../constants'
+import { Todo, TodoItemProps } from '../../constants'
 
 import * as S from './TodoItem.style'
 
